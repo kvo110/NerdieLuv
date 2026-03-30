@@ -1,0 +1,219 @@
+/*
+  nerdieluv.css
+  Main stylesheet for Assignment 03.
+  I kept the layout close to the sample look: light purple panels,
+  simple borders, left-aligned labels, and a clean old-school form style.
+*/
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  color: #222222;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 14px;
+}
+
+.page {
+  width: 800px;
+  margin: 0 auto;
+  padding: 0 0 20px;
+}
+
+.banner {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  margin: 20px 0 15px;
+}
+
+.logo {
+  width: 90px;
+  height: auto;
+}
+
+.banner-text h1 {
+  margin: 0;
+  color: #6d63a8;
+  font-size: 36px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.banner-text p {
+  margin: 2px 0 0;
+  color: #666666;
+  font-size: 14px;
+}
+
+.main-card {
+  width: 620px;
+  background: #dedaf7;
+  border: 2px solid #8f8ab3;
+  border-radius: 10px;
+  padding: 14px;
+  box-sizing: border-box;
+}
+
+.home-card {
+  min-height: 180px;
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 22px;
+}
+
+.home-links {
+  margin-top: 24px;
+}
+
+.home-links p {
+  margin: 16px 0;
+  font-size: 22px;
+}
+
+.home-links a {
+  color: #d26f8d;
+  text-decoration: none;
+}
+
+.home-links a:hover {
+  text-decoration: underline;
+}
+
+.home-icon {
+  width: 28px;
+  height: 28px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.footer {
+  width: 620px;
+  margin-top: 20px;
+  color: #444444;
+  font-size: 13px;
+}
+
+.back-link {
+  color: #6a8e23;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.validators {
+  margin-top: 10px;
+}
+
+.validators img {
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* Forms */
+
+form fieldset {
+  width: 620px;
+  background: #dedaf7;
+  border: 2px solid #8f8ab3;
+  border-radius: 10px;
+  padding: 14px;
+  box-sizing: border-box;
+}
+
+legend {
+  background: #ffffff;
+  border: 1px solid #999999;
+  padding: 2px 8px;
+  font-weight: bold;
+}
+
+.row {
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.label {
+  float: left;
+  width: 11em;
+  font-weight: bold;
+}
+
+input[type="text"],
+select {
+  font-size: 14px;
+  padding: 2px;
+}
+
+.small-text {
+  width: 6em;
+}
+
+.name-box {
+  width: 16em;
+}
+
+.age-range {
+  width: 4em;
+}
+
+.button-row {
+  margin-top: 12px;
+}
+
+button,
+input[type="submit"] {
+  background: #f3b2b2;
+  border: 1px solid #555555;
+  padding: 5px 12px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  opacity: 0.95;
+}
+
+/* Match output */
+
+.match {
+  margin: 18px 0;
+}
+
+.match p {
+  margin: 0;
+  background: #e7e4ff;
+  padding: 6px;
+  font-weight: bold;
+}
+
+.match img {
+  width: 150px;
+  vertical-align: top;
+  margin-right: 14px;
+}
+
+.match ul {
+  display: inline-block;
+  list-style-type: none;
+  margin: 8px 0 0;
+  padding: 0;
+  vertical-align: top;
+}
+
+.match li {
+  margin: 4px 0;
+}
+
+.match-label {
+  font-weight: bold;
+  display: inline-block;
+  width: 60px;
+}
