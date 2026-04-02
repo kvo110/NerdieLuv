@@ -231,3 +231,12 @@ h2 {
 .back-link:hover {
   text-decoration: underline;
 }
+
+.profile-pic {
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #6d63a8;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}

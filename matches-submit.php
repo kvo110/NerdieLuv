@@ -9,7 +9,7 @@ include_once("common.php");
 
 /*
  * Break one line from singles.txt into named values.
- * This makes the later matching code a lot easier to read.
+ * This makes the later matching code easier to read.
  */
 function parse_user(string $line): array {
   $parts = explode(",", trim($line));
@@ -26,8 +26,8 @@ function parse_user(string $line): array {
 }
 
 /*
- * The personality rule says at least one letter
- * must match in the same index.
+ * At least one personality letter has to match
+ * in the same position.
  */
 function has_personality_match(string $type1, string $type2): bool {
   for ($i = 0; $i < strlen($type1); $i++) {
@@ -40,7 +40,7 @@ function has_personality_match(string $type1, string $type2): bool {
 }
 
 /*
- * Checks every matching rule from the spec.
+ * Checks the full match rules from the assignment.
  */
 function is_match(array $user, array $candidate): bool {
   if ($user["name"] === $candidate["name"]) {
@@ -71,30 +71,36 @@ function is_match(array $user, array $candidate): bool {
 }
 
 /*
- * Picks a profile image based on gender.
- * F uses the female icon, everything else uses the male one.
+ * Picks the correct profile image from the assets folder.
+ * Female users get the female icon. Everyone else uses the default one.
  */
 function get_profile_image(array $person): string {
   if ($person["gender"] === "F") {
-    return "assets/profile-female.png";
+    return "assets/profile_female.png";
   }
 
   return "assets/profile.png";
 }
 
 /*
- * Prints one matched person in the cleaner card style.
+ * Prints one match in the page.
  */
 function print_match(array $person): void {
   $profile_image = get_profile_image($person);
 ?>
   <article class="match">
-    <img src="<?= htmlspecialchars($profile_image) ?>" alt="Profile picture for <?= htmlspecialchars($person["name"]) ?>">
+    <img
+      src="<?= htmlspecialchars($profile_image) ?>"
+      alt="Profile picture for <?= htmlspecialchars($person["name"]) ?>"
+      class="profile-pic"
+    >
 
     <p>
       <?= htmlspecialchars($person["name"]) ?>
-      (<?= htmlspecialchars($person["gender"]) ?>, <?= htmlspecialchars((string) $person["age"]) ?>,
-      <?= htmlspecialchars($person["personality"]) ?>, <?= htmlspecialchars($person["os"]) ?>)
+      (<?= htmlspecialchars($person["gender"]) ?>,
+      <?= htmlspecialchars((string) $person["age"]) ?>,
+      <?= htmlspecialchars($person["personality"]) ?>,
+      <?= htmlspecialchars($person["os"]) ?>)
     </p>
   </article>
 <?php
