@@ -1,81 +1,81 @@
 /*
   nerdieluv.css
-  Main stylesheet for Assignment 03.
-  I kept the layout close to the sample look: light purple panels,
-  simple borders, left-aligned labels, and a clean old-school form style.
+  Main stylesheet for NerdieLuv.
+  I kept the layout clean and centered, but still simple enough
+  to fit the assignment style without overdoing it.
 */
 
 body {
   margin: 0;
-  padding: 0;
-  background: #ffffff;
-  color: #222222;
-  font-family: Verdana, Arial, sans-serif;
-  font-size: 14px;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #c9d6ff, #e2e2e2);
+  color: #222;
+  text-align: center;
 }
 
 .page {
-  width: 800px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 0 0 20px;
+  padding: 24px 18px 40px;
+}
+
+.site-header {
+  margin-bottom: 24px;
 }
 
 .banner {
   display: flex;
-  align-items: flex-end;
-  gap: 10px;
-  margin: 20px 0 15px;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-top: 10px;
 }
 
 .logo {
-  width: 90px;
+  width: 88px;
   height: auto;
 }
 
 .banner-text h1 {
   margin: 0;
+  font-size: 48px;
   color: #6d63a8;
-  font-size: 36px;
-  font-weight: bold;
-  line-height: 1;
 }
 
 .banner-text p {
-  margin: 2px 0 0;
-  color: #666666;
-  font-size: 14px;
+  margin: 5px 0 0;
+  color: #555;
+  font-size: 18px;
+}
+
+.content-panel {
+  margin-top: 24px;
 }
 
 .main-card {
-  width: 620px;
-  background: #dedaf7;
-  border: 2px solid #8f8ab3;
-  border-radius: 10px;
-  padding: 14px;
-  box-sizing: border-box;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 12px;
 }
 
-.home-card {
-  min-height: 180px;
-}
-
-h2 {
+.home-card h2 {
   margin-top: 0;
   font-size: 22px;
 }
 
-.home-links {
-  margin-top: 24px;
-}
-
 .home-links p {
-  margin: 16px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 18px 0;
   font-size: 22px;
 }
 
 .home-links a {
-  color: #d26f8d;
+  color: #4b2f96;
   text-decoration: none;
+  font-weight: 600;
 }
 
 .home-links a:hover {
@@ -83,182 +83,151 @@ h2 {
 }
 
 .home-icon {
-  width: 28px;
-  height: 28px;
-  vertical-align: middle;
-  margin-right: 10px;
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
 }
 
-.footer {
-  width: 620px;
-  margin-top: 20px;
-  color: #444444;
-  font-size: 13px;
+.simple-form {
+  max-width: 560px;
+  margin: 0 auto;
 }
 
-.back-link {
-  color: #6a8e23;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.back-link:hover {
-  text-decoration: underline;
-}
-
-.validators {
-  margin-top: 10px;
-}
-
-.validators img {
-  margin-right: 8px;
-  vertical-align: middle;
-}
-
-/* Forms */
-
-form fieldset {
-  width: 620px;
-  background: #dedaf7;
-  border: 2px solid #8f8ab3;
-  border-radius: 10px;
-  padding: 14px;
-  box-sizing: border-box;
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
 }
 
 legend {
-  background: #ffffff;
-  border: 1px solid #999999;
-  padding: 2px 8px;
-  font-weight: bold;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 18px;
 }
 
-.row {
-  margin: 10px 0;
-  overflow: hidden;
+.form-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 14px 0;
+  flex-wrap: wrap;
 }
 
-.label {
-  float: left;
-  width: 11em;
-  font-weight: bold;
+.form-row-center {
+  justify-content: center;
+}
+
+.form-label {
+  font-weight: 700;
+  min-width: 130px;
+  text-align: right;
+}
+
+.inline-option {
+  font-weight: 400;
+}
+
+.name-box {
+  width: 190px;
+  padding: 7px 8px;
+}
+
+.small-text,
+.age-range,
+select {
+  padding: 7px 8px;
+}
+
+.small-text {
+  width: 68px;
+}
+
+.age-range {
+  width: 56px;
+  text-align: center;
+}
+
+.range-separator {
+  font-weight: 700;
 }
 
 input[type="text"],
 select {
+  border: 1px solid #9aa4b2;
+  border-radius: 6px;
   font-size: 14px;
-  padding: 2px;
 }
 
-.small-text {
-  width: 6em;
-}
-
-.name-box {
-  width: 16em;
-}
-
-.age-range {
-  width: 4em;
-}
-
-.button-row {
-  margin-top: 12px;
-}
-
-button,
 input[type="submit"] {
-  background: #f3b2b2;
-  border: 1px solid #555555;
-  padding: 5px 12px;
-  font-size: 20px;
-  font-weight: bold;
+  padding: 8px 16px;
+  border: 1px solid #8a8a8a;
+  border-radius: 6px;
+  background: #ececec;
+  font-size: 14px;
   cursor: pointer;
 }
 
-button:hover,
 input[type="submit"]:hover {
-  opacity: 0.95;
+  background: #e2e2e2;
 }
 
-/* Match output */
-
-.match {
-  margin: 18px 0;
-}
-
-.match p {
-  margin: 0;
-  background: #e7e4ff;
-  padding: 6px;
-  font-weight: bold;
-}
-
-.match img {
-  width: 150px;
-  vertical-align: top;
-  margin-right: 14px;
-}
-
-.match ul {
-  display: inline-block;
-  list-style-type: none;
-  margin: 8px 0 0;
-  padding: 0;
-  vertical-align: top;
-}
-
-.match li {
-  margin: 4px 0;
-}
-
-.match-label {
-  font-weight: bold;
-  display: inline-block;
-  width: 60px;
+.button-row {
+  margin-top: 20px;
 }
 
 .result-card {
-  min-height: 120px;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 14px 18px;
 }
 
 .result-card p {
   font-size: 18px;
-  margin: 18px 0;
+  margin: 14px 0;
 }
 
-.matches-area {
-  width: 620px;
+h2 {
+  margin-top: 12px;
+  font-size: 30px;
+}
+
+.matches-list {
+  margin-top: 28px;
 }
 
 .match {
-  margin: 18px 0 28px;
-}
-
-.match p {
-  margin: 0 0 8px;
-  background: #e7e4ff;
-  padding: 6px 10px;
-  font-weight: bold;
+  margin: 26px 0;
 }
 
 .match img {
-  width: 150px;
-  height: auto;
-  display: inline-block;
-  vertical-align: top;
-  margin-right: 14px;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #6d63a8;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
 }
 
-.match ul {
-  display: inline-block;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  vertical-align: top;
+.match p {
+  margin-top: 10px;
+  font-size: 15px;
 }
 
-.match li {
-  margin: 4px 0;
-  font-size: 16px;
+.footer {
+  max-width: 720px;
+  margin: 40px auto 0;
+  font-size: 12px;
+  color: #777;
+  line-height: 1.5;
+}
+
+.back-link {
+  color: #4b2f96;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
 }

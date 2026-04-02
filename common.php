@@ -1,35 +1,36 @@
 <?php
 /*
  * common.php
- * Shared functions for the NerdieLuv site.
- * I put the repeated page pieces here so the other files stay cleaner.
+ * Shared layout pieces for the NerdieLuv pages.
+ * I moved the repeated page wrapper here so the other files stay cleaner.
  */
 
-// Prints the top part of the page used across the site
 function render_header(string $title = "NerdieLuv"): void {
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title><?= $title ?></title>
+  <title><?= htmlspecialchars($title) ?></title>
   <link rel="stylesheet" href="nerdieluv.css">
 </head>
 <body>
   <div class="page">
-    <div class="banner">
-      <div class="banner-text">
-        <h1>nerdLuv</h1>
-        <p>where meek geeks meet</p>
+    <header class="site-header">
+      <div class="banner">
+        <img src="assets/luv.gif" alt="NerdLuv logo" class="logo">
+        <div class="banner-text">
+          <h1>nerdLuv</h1>
+          <p>where meek geeks meet</p>
+        </div>
       </div>
-    </div>
+    </header>
 <?php
 }
 
-// Prints the common footer section
 function render_footer(): void {
 ?>
-    <div class="footer">
+    <footer class="footer">
       <p>
         This page is for single nerds to meet and date each other! Type in your
         personal information and wait for the nerdly luv to begin!
@@ -42,7 +43,7 @@ function render_footer(): void {
       <p>
         <a href="index.php" class="back-link">Back to front page</a>
       </p>
-    </div>
+    </footer>
   </div>
 </body>
 </html>

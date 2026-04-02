@@ -1,16 +1,15 @@
 <?php
 /*
  * matches-submit.php
- * This page reads the selected user's name from the query string,
- * finds that person in singles.txt, and then prints everybody who
- * matches based on the assignment rules.
+ * Reads the selected user's name, finds that user in singles.txt,
+ * then prints everyone who matches based on the assignment rules.
  */
 
 include_once("common.php");
 
 /*
- * Turns one line from singles.txt into an associative array
- * so the rest of the code is easier to read.
+ * Break one line from singles.txt into named values.
+ * This makes the later matching code a lot easier to read.
  */
 function parse_user(string $line): array {
   $parts = explode(",", trim($line));
@@ -27,8 +26,8 @@ function parse_user(string $line): array {
 }
 
 /*
- * Checks whether two users share at least one personality letter
- * in the same position.
+ * The personality rule says at least one letter
+ * must match in the same index.
  */
 function has_personality_match(string $type1, string $type2): bool {
   for ($i = 0; $i < strlen($type1); $i++) {
@@ -41,7 +40,7 @@ function has_personality_match(string $type1, string $type2): bool {
 }
 
 /*
- * Checks whether two users satisfy all matching rules.
+ * Checks every matching rule from the spec.
  */
 function is_match(array $user, array $candidate): bool {
   if ($user["name"] === $candidate["name"]) {
@@ -72,22 +71,32 @@ function is_match(array $user, array $candidate): bool {
 }
 
 /*
- * Prints one matching person in the required format.
+ * Picks a profile image based on gender.
+ * F uses the female icon, everything else uses the male one.
+ */
+function get_profile_image(array $person): string {
+  if ($person["gender"] === "F") {
+    return "assets/profile-female.png";
+  }
+
+  return "assets/profile.png";
+}
+
+/*
+ * Prints one matched person in the cleaner card style.
  */
 function print_match(array $person): void {
+  $profile_image = get_profile_image($person);
 ?>
-  <div class="match">
-    <p><?= htmlspecialchars($person["name"]) ?></p>
+  <article class="match">
+    <img src="<?= htmlspecialchars($profile_image) ?>" alt="Profile picture for <?= htmlspecialchars($person["name"]) ?>">
 
-    <img src="user.jpg" alt="User profile picture">
-
-    <ul>
-      <li><span class="match-label">gender:</span> <?= htmlspecialchars($person["gender"]) ?></li>
-      <li><span class="match-label">age:</span> <?= htmlspecialchars((string) $person["age"]) ?></li>
-      <li><span class="match-label">type:</span> <?= htmlspecialchars($person["personality"]) ?></li>
-      <li><span class="match-label">OS:</span> <?= htmlspecialchars($person["os"]) ?></li>
-    </ul>
-  </div>
+    <p>
+      <?= htmlspecialchars($person["name"]) ?>
+      (<?= htmlspecialchars($person["gender"]) ?>, <?= htmlspecialchars((string) $person["age"]) ?>,
+      <?= htmlspecialchars($person["personality"]) ?>, <?= htmlspecialchars($person["os"]) ?>)
+    </p>
+  </article>
 <?php
 }
 
@@ -97,27 +106,34 @@ $lines = file("singles.txt", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 $users = [];
 $selected_user = null;
 
-// Read everybody from the file first
 foreach ($lines as $line) {
   $person = parse_user($line);
   $users[] = $person;
 
-  if ($person["name"] === $search_name) {
+  if (trim(strtolower($person["name"])) === trim(strtolower($search_name))) {
     $selected_user = $person;
   }
 }
 
-render_header("Matches");
+render_header("Matches for " . $search_name);
 ?>
 
-<div class="matches-area">
+<section class="content-panel">
   <h2>Matches for <?= htmlspecialchars($search_name) ?></h2>
 
-  <?php foreach ($users as $person): ?>
-    <?php if (is_match($selected_user, $person)): ?>
-      <?php print_match($person); ?>
-    <?php endif; ?>
-  <?php endforeach; ?>
-</div>
+  <?php if ($selected_user === null): ?>
+    <div class="result-card">
+      <p>User not found. Try signing up first.</p>
+    </div>
+  <?php else: ?>
+    <div class="matches-list">
+      <?php foreach ($users as $person): ?>
+        <?php if (is_match($selected_user, $person)): ?>
+          <?php print_match($person); ?>
+        <?php endif; ?>
+      <?php endforeach; ?>
+    </div>
+  <?php endif; ?>
+</section>
 
 <?php render_footer(); ?>

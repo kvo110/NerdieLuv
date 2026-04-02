@@ -1,13 +1,12 @@
 <?php
 /*
  * signup-submit.php
- * This page receives the signup form data, saves the new user
- * to singles.txt, and then shows a short confirmation message.
+ * Receives the signup form, adds the new user to singles.txt,
+ * and shows a confirmation page.
  */
 
 include_once("common.php");
 
-// Grab the submitted values from the form
 $name = trim($_POST["name"]);
 $gender = trim($_POST["gender"]);
 $age = trim($_POST["age"]);
@@ -16,25 +15,37 @@ $os = trim($_POST["os"]);
 $min = trim($_POST["min"]);
 $max = trim($_POST["max"]);
 
-// Build the line exactly how the assignment file format expects it
-$new_user = $name . "," . $gender . "," . $age . "," . $personality . "," .
-  $os . "," . $min . "," . $max . "\n";
+$new_user_line = $name . "," . $gender . "," . $age . "," . $personality . "," .
+  $os . "," . $min . "," . $max;
 
-// Add the new user to the end of singles.txt
-file_put_contents("singles.txt", $new_user, FILE_APPEND);
+$current_text = file_get_contents("singles.txt");
+
+if ($current_text === false) {
+  $write_result = false;
+} else {
+  if ($current_text !== "" && substr($current_text, -1) !== "\n") {
+    $new_user_line = "\n" . $new_user_line;
+  }
+
+  $new_user_line .= "\n";
+  $write_result = file_put_contents("singles.txt", $new_user_line, FILE_APPEND);
+}
 
 render_header("Sign Up Submitted");
 ?>
 
-<div class="main-card result-card">
-  <h2>Thank you!</h2>
-
-  <p>Welcome to NerdLuv, <?= htmlspecialchars($name) ?>!</p>
-
-  <p>
-    Now
-    <a href="matches.php">log in to see your matches!</a>
-  </p>
-</div>
+<section class="content-panel">
+  <div class="result-card">
+    <?php if ($write_result === false): ?>
+      <h2>Oops!</h2>
+      <p>There was a problem saving your profile.</p>
+      <p>Please check the file permissions for singles.txt and try again.</p>
+    <?php else: ?>
+      <h2>Thank you!</h2>
+      <p>Welcome to NerdLuv, <?= htmlspecialchars($name) ?>!</p>
+      <p>Now <a href="matches.php">log in to see your matches!</a></p>
+    <?php endif; ?>
+  </div>
+</section>
 
 <?php render_footer(); ?>
