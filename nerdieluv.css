@@ -226,3 +226,39 @@ input[type="submit"]:hover {
   font-size: 18px;
   margin: 18px 0;
 }
+
+.matches-area {
+  width: 620px;
+}
+
+.match {
+  margin: 18px 0 28px;
+}
+
+.match p {
+  margin: 0 0 8px;
+  background: #e7e4ff;
+  padding: 6px 10px;
+  font-weight: bold;
+}
+
+.match img {
+  width: 150px;
+  height: auto;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 14px;
+}
+
+.match ul {
+  display: inline-block;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+}
+
+.match li {
+  margin: 4px 0;
+  font-size: 16px;
+}
